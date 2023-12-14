@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAINFOREST</title>
+    <link rel="stylesheet" href="p3.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333; /* Set background color as needed */
+            color: #fff; /* Set text color as needed */
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        header {
+             /* Set nav bar background color */
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+            z-index: 1;
+        }
+
+        #fullscreen-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none; /* Ensure that the video doesn't interfere with mouse events on other elements */
+            outline: none; /* Remove the default outline/border */
+        }
+
+        .video-controls {
+            position: fixed;
+            bottom: 20px; /* Adjust the distance from the bottom */
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            pointer-events: auto; /* Re-enable mouse events on the controls */
+            z-index: 2; /* Ensure the controls are on top */
+        }
+
+        .video-controls button {
+            cursor: pointer;
+            color: #fff;
+            font-size: 2em;
+            background: transparent;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="navbar" id="myNavbar">
+            <a href="RESP.HTML">Home</a>
+            <a href="p2.html">Flora & Fauna</a>
+            <a href="p3.html">Rainforest</a>
+            <a href="P4.HTML">Tour</a>
+        </div>
+    </header>
+
+    <video id="fullscreen-video" poster="poster.jpg" controls>
+        <!-- Add your video source(s) -->
+        <source src="69.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="video-controls">
+        <button id="play-button" onclick="togglePlayPause()">▶️</button>
+        <button id="pause-button" onclick="pauseVideo()">⏸</button>
+    </div>
+
+    <script>
+        const video = document.getElementById('fullscreen-video');
+        const playButton = document.getElementById('play-button');
+        const pauseButton = document.getElementById('pause-button');
+
+        function togglePlayPause() {
+            if (video.paused) {
+                video.play();
+                playButton.style.display = 'none';
+                pauseButton.style.display = 'block';
+            } else {
+                video.pause();
+                playButton.style.display = 'block';
+                pauseButton.style.display = 'none';
+            }
+        }
+
+        function pauseVideo() {
+            video.pause();
+            playButton.style.display = 'block';
+            pauseButton.style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>
